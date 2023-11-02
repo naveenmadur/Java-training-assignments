@@ -1,0 +1,66 @@
+Flutter Java training: Assignment 1
+
+
+	1	CREATE TABLE student(roll_no int primary key auto_increment,name varchar(30), division varchar(10), branch varchar(30), city varchar(30), marks int);
+
+	2	 INSERT INTO student (name, division,branch,city,marks) VALUES ('ABC', 'A', 'CSE', 'Pune', 50), ('DEF', 'B', 'CSE', 'Pune', 30), ('GHI', 'A', 'CSE', 'Pune', 78), ('JKL', 'C', 'Mechanical', 
+
+                 'Pune',60), ('MNO', 'C', 'CSE', 'Pune', 92), ('PQR', 'B', 'Electronics', 'Delhi', 50), ('STU', 'B', 'Civil', 'Hyderabad', 83), ('VWX', 'A', 'CSE', 'Noida', 50), ('YZA', 'B', 'CSE', 'Guwahati', 82),   
+
+                 ('BCD', 'A', 'Mechanical', 'Aurangabad', 64), ('EFG', 'C', 'Electronics', 'Solapur', 86);
+
+	3	SELECT name, city FROM student;
+
+	4	SELECT DISTINCT name FROM student;
+
+	5	SELECT * FROM student;
+
+	6	SELECT * FROM student WHERE marks > 70;
+
+	7	SELECT * FROM student WHERE name LIKE 'S%';
+
+	8	SELECT *FROM student WHERE marks >= 50 AND marks <= 60;
+
+	9	SELECT * FROM student WHERE branch = 'CSE' AND city = 'Pune';
+
+	10	UPDATE student SET branch = 'IT' WHERE roll_no = 9;
+
+	11	DELETE FROM student WHERE division = 'B';
+
+	12	CREATE TABLE TE_Students (roll_no INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(30));
+
+	13	 SELECT roll_no from student UNION SELECT roll_no FROM TE_Students;
+
+
+
+
+
+
+
+
+
+
+
+
+
+Flutter Java training: Assignment 2
+
+	1	CREATE TABLE Customer(cust_id INT PRIMARY KEY AUTO_INCREMENT, cust_name VARCHAR(30), product VARCHAR(50), quantity INT, total_price FLOAT);
+
+	2	ALTER TABLE Customer ADD COLUMN price_per_quantity FLOAT;
+
+	3	CREATE VIEW Cust_view AS SELECT cust_id, cust_name FROM Customer;
+
+	4	CREATE OR REPLACE VIEW Cust_view AS SELECT cust_id, product, total_price FROM Customer;
+
+	5	DROP VIEW Cust_view;
+
+	6	CREATE INDEX cust_index ON Customer(cust_name);
+
+	7	DROP INDEX cust_index ON Customer;
+
+	8	SELECT * FROM Customer as CUST;
+
+	9	DROP TABLE Customer;
+
+
