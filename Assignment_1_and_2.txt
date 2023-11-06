@@ -11,25 +11,127 @@ Flutter Java training: Assignment 1
 
 	3	SELECT name, city FROM student;
 
+		+------+------------+
+		| name | city       |
+		+------+------------+
+		| ABC  | Pune       |
+		| GHI  | Pune       |
+		| JKL  | Pune       |
+		| MNO  | Pune       |
+		| VWX  | Noida      |
+		| BCD  | Aurangabad |
+		| EFG  | Solapur    |
+		+------+------------+
+
 	4	SELECT DISTINCT name FROM student;
+
+		+------+
+		| name |
+		+------+
+		| ABC  |
+		| GHI  |
+		| JKL  |
+		| MNO  |
+		| VWX  |
+		| BCD  |
+		| EFG  |
+		+------+
 
 	5	SELECT * FROM student;
 
+		+---------+------+----------+-------------+------------+-------+
+		| roll_no | name | division | branch      | city       | marks |
+		+---------+------+----------+-------------+------------+-------+
+		|       1 | ABC  | A        | CSE         | Pune       |    50 |
+		|       2 | ABC  | B        | CSE         | Pune       |    50 |
+		|       3 | GHI  | A        | CSE         | Pune       |    78 |
+		|       4 | JKL  | C        | Mechanical  | Pune       |    60 |
+		|       5 | MNO  | C        | CSE         | Pune       |    92 |
+		|       8 | VWX  | A        | CSE         | Noida      |    50 |
+		|       9 | HIJ  | A        | CSE         | Noida      |    50 |
+		|      10 | BCD  | A        | Mechanical  | Aurangabad |    64 |
+		|      11 | EFG  | C        | Electronics | Solapur    |    86 |
+		+---------+------+----------+-------------+------------+-------+
+
 	6	SELECT * FROM student WHERE marks > 70;
 
+		+---------+------+----------+-------------+---------+-------+
+		| roll_no | name | division | branch      | city    | marks |
+		+---------+------+----------+-------------+---------+-------+
+		|       3 | GHI  | A        | CSE         | Pune    |    78 |
+		|       5 | MNO  | C        | CSE         | Pune    |    92 |
+		|      11 | EFG  | C        | Electronics | Solapur |    86 |
+		+---------+------+----------+-------------+---------+-------+
+
 	7	SELECT * FROM student WHERE name LIKE 'S%';
+		Empty set (0.01 sec)
 
 	8	SELECT *FROM student WHERE marks >= 50 AND marks <= 60;
 
+		+---------+------+----------+------------+-------+-------+
+		| roll_no | name | division | branch     | city  | marks |
+		+---------+------+----------+------------+-------+-------+
+		|       1 | ABC  | A        | CSE        | Pune  |    50 |
+		|       4 | JKL  | C        | Mechanical | Pune  |    60 |
+		|       8 | VWX  | A        | CSE        | Noida |    50 |
+		+---------+------+----------+------------+-------+-------+
+
 	9	SELECT * FROM student WHERE branch = 'CSE' AND city = 'Pune';
+
+		+---------+------+----------+--------+------+-------+
+		| roll_no | name | division | branch | city | marks |
+		+---------+------+----------+--------+------+-------+
+		|       1 | ABC  | A        | CSE    | Pune |    50 |
+		|       3 | GHI  | A        | CSE    | Pune |    78 |
+		|       5 | MNO  | C        | CSE    | Pune |    92 |
+		+---------+------+----------+--------+------+-------+
 
 	10	UPDATE student SET branch = 'IT' WHERE roll_no = 9;
 
+		+---------+------+----------+-------------+------------+-------+
+		| roll_no | name | division | branch      | city       | marks |
+		+---------+------+----------+-------------+------------+-------+
+		|       1 | ABC  | A        | CSE         | Pune       |    50 |
+		|       3 | GHI  | A        | CSE         | Pune       |    78 |
+		|       4 | JKL  | C        | Mechanical  | Pune       |    60 |
+		|       5 | MNO  | C        | CSE         | Pune       |    92 |
+		|       8 | VWX  | A        | CSE         | Noida      |    50 |
+		|       9 | HIJ  | A        | IT          | Noida      |    50 |
+		|      10 | BCD  | A        | Mechanical  | Aurangabad |    64 |
+		|      11 | EFG  | C        | Electronics | Solapur    |    86 |
+		+---------+------+----------+-------------+------------+-------+
+
 	11	DELETE FROM student WHERE division = 'B';
+
+		+---------+------+----------+-------------+------------+-------+
+		| roll_no | name | division | branch      | city       | marks |
+		+---------+------+----------+-------------+------------+-------+
+		|       1 | ABC  | A        | CSE         | Pune       |    50 |
+		|       3 | GHI  | A        | CSE         | Pune       |    78 |
+		|       4 | JKL  | C        | Mechanical  | Pune       |    60 |
+		|       5 | MNO  | C        | CSE         | Pune       |    92 |
+		|       8 | VWX  | A        | CSE         | Noida      |    50 |
+		|       9 | HIJ  | A        | CSE         | Noida      |    50 |
+		|      10 | BCD  | A        | Mechanical  | Aurangabad |    64 |
+		|      11 | EFG  | C        | Electronics | Solapur    |    86 |
+		+---------+------+----------+-------------+------------+-------+
 
 	12	CREATE TABLE TE_Students (roll_no INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(30));
 
 	13	 SELECT roll_no from student UNION SELECT roll_no FROM TE_Students;
+
+		+---------+
+		| roll_no |
+		+---------+
+		|       1 |
+		|       3 |
+		|       4 |
+		|       5 |
+		|       8 |
+		|      10 |
+		|      11 |
+		|       2 |
+		+---------+
 
 
 
@@ -47,11 +149,52 @@ Flutter Java training: Assignment 2
 
 	1	CREATE TABLE Customer(cust_id INT PRIMARY KEY AUTO_INCREMENT, cust_name VARCHAR(30), product VARCHAR(50), quantity INT, total_price FLOAT);
 
+		+--------------------+-------------+------+-----+---------+----------------+
+		| Field              | Type        | Null | Key | Default | Extra          |
+		+--------------------+-------------+------+-----+---------+----------------+
+		| cust_id            | int         | NO   | PRI | NULL    | auto_increment |
+		| cust_name          | varchar(30) | YES  |     | NULL    |                |
+		| product            | varchar(50) | YES  |     | NULL    |                |
+		| quantity           | int         | YES  |     | NULL    |                |
+		| total_price        | float       | YES  |     | NULL    |                |
+		+--------------------+-------------+------+-----+---------+----------------+
+
 	2	ALTER TABLE Customer ADD COLUMN price_per_quantity FLOAT;
+
+		+--------------------+-------------+------+-----+---------+----------------+
+		| Field              | Type        | Null | Key | Default | Extra          |
+		+--------------------+-------------+------+-----+---------+----------------+
+		| cust_id            | int         | NO   | PRI | NULL    | auto_increment |
+		| cust_name          | varchar(30) | YES  |     | NULL    |                |
+		| product            | varchar(50) | YES  |     | NULL    |                |
+		| quantity           | int         | YES  |     | NULL    |                |
+		| total_price        | float       | YES  |     | NULL    |                |
+		| price_per_quantity | float       | YES  |     | NULL    |                |
+		+--------------------+-------------+------+-----+---------+----------------+
 
 	3	CREATE VIEW Cust_view AS SELECT cust_id, cust_name FROM Customer;
 
+		+---------+-----------+
+		| cust_id | cust_name |
+		+---------+-----------+
+		|       1 | Rajesh    |
+		|       2 | Mukesh    |
+		|       3 | Joy       |
+		|       4 | Ankit     |
+		|       5 | Ankita    |
+		+---------+-----------+
+
 	4	CREATE OR REPLACE VIEW Cust_view AS SELECT cust_id, product, total_price FROM Customer;
+
+		+---------+----------+-------------+
+		| cust_id | product  | total_price |
+		+---------+----------+-------------+
+		|       1 | Pen      |         100 |
+		|       2 | Notebook |         500 |
+		|       3 | Pencil   |         150 |
+		|       4 | Notebook |         600 |
+		|       5 | Stapler  |         300 |
+		+---------+----------+-------------+
 
 	5	DROP VIEW Cust_view;
 
