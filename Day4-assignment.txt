@@ -1,0 +1,62 @@
+Day 4: Assignment - 2/11/23
+
+
+	1	CREATE TABLE customer(ID INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(30), age INT, address VARCHAR(100), salary FLOAT);
+
+	2	CREATE TABLE ORDERS(O_ID INT PRIMARY KEY AUTO_INCREMENT, o_date DATE, customer_id INT, amount FLOAT);
+
+	3	INSERT INTO customer(name,age,address,salary) VALUES 
+		('Raju',24,'Pune',45000), 
+		('Mahesh',27,'Madha',68000), 
+		('ABCD',30,'Delhi',70000), 
+		('EFGH',22,'Pune',70000), 
+		('IJKL',24,'Solapur',80000);
+
+		INSERT INTO orders (o_date, customer_id, amount) VALUES 
+		('2023-3-24',2,4000),   
+		('2023-1-24',3,4000), 
+		('2023-7-6',101,2456), 
+		('2023-10-28',4,7000); 
+
+	4	SELECT ID, name, amount, o_date FROM customer
+		INNER JOIN orders ON ORDERS.O_ID = CUSTOMER.ID;
+
+	5	SELECT ID, name, amount, o_date FROM Customer  
+		LEFT JOIN orders ON CUSTOMER.ID = ORDERS.customer_id;
+
+	6	SELECT ID, name, amount, o_date FROM Customer 
+		RIGHT JOIN orders ON CUSTOMER.ID = ORDERS.customer_id;
+
+	7	SELECT ID, name, amount, o_date 
+		FROM customer 
+		LEFT JOIN orders ON CUSTOMER.ID = ORDERS.customer_id 
+		UNION ALL 
+		SELECT ID, name, amount, o_date 
+		FROM customer RIGHT JOIN orders ON CUSTOMER.ID = ORDERS.customer_id;
+
+	8	SELECT c1.name AS customer1_name, 
+		c2.name AS customer2_name,     	
+		c1.address AS shared_address 
+		FROM customer c1 JOIN customer c2
+		ON c1.address = c2.address
+	     	AND c1.ID < c2.ID;
+
+	9	SELECT ID, name, amount, o_date FROM customer
+		CROSS JOIN orders;
+
+	10	SELECT * FROM customer WHERE salary > 20000;
+
+	11	CREATE TABLE cust_bkup AS SELECT * FROM customer;
+
+	12	UPDATE customer SET salary = salary * 1.10 
+		WHERE ID IN (SELECT ID FROM cust_bkup WHERE age >= 24);
+
+	13	DELETE FROM customer WHERE ID IN (SELECT ID FROM cust_bkup WHERE age > 26);
+
+
+
+
+
+
+
+
