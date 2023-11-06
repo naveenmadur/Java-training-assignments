@@ -21,11 +21,40 @@ Day 4: Assignment - 2/11/23
 	4	SELECT ID, name, amount, o_date FROM customer
 		INNER JOIN orders ON ORDERS.O_ID = CUSTOMER.ID;
 
+		+----+------+--------+------------+
+		| ID | name | amount | o_date     |
+		+----+------+--------+------------+
+		|  1 | Raju |   3000 | 2023-02-05 |
+		|  4 | EFGH |   2456 | 2023-07-06 |
+		|  5 | IJKL |   7000 | 2023-10-28 |
+		+----+------+--------+------------+
+
 	5	SELECT ID, name, amount, o_date FROM Customer  
 		LEFT JOIN orders ON CUSTOMER.ID = ORDERS.customer_id;
+		
+		+----+--------+--------+------------+
+		| ID | name   | amount | o_date     |
+		+----+--------+--------+------------+
+		|  1 | Raju   |   3000 | 2023-02-05 |
+		|  2 | Mahesh |   4000 | 2023-03-24 |
+		|  3 | ABCD   |   4000 | 2023-01-24 |
+		|  4 | EFGH   |   7000 | 2023-10-28 |
+		|  5 | IJKL   |   NULL | NULL       |
+		+----+--------+--------+------------+
+
 
 	6	SELECT ID, name, amount, o_date FROM Customer 
 		RIGHT JOIN orders ON CUSTOMER.ID = ORDERS.customer_id;
+
+		+------+--------+--------+------------+
+		| ID   | name   | amount | o_date     |
+		+------+--------+--------+------------+
+		|    1 | Raju   |   3000 | 2023-02-05 |
+		|    2 | Mahesh |   4000 | 2023-03-24 |
+		|    3 | ABCD   |   4000 | 2023-01-24 |
+		| NULL | NULL   |   2456 | 2023-07-06 |
+		|    4 | EFGH   |   7000 | 2023-10-28 |
+		+------+--------+--------+------------+
 
 	7	SELECT ID, name, amount, o_date 
 		FROM customer 
@@ -34,6 +63,21 @@ Day 4: Assignment - 2/11/23
 		SELECT ID, name, amount, o_date 
 		FROM customer RIGHT JOIN orders ON CUSTOMER.ID = ORDERS.customer_id;
 
+		+------+--------+--------+------------+
+		| ID   | name   | amount | o_date     |
+		+------+--------+--------+------------+
+		|    1 | Raju   |   3000 | 2023-02-05 |
+		|    2 | Mahesh |   4000 | 2023-03-24 |
+		|    3 | ABCD   |   4000 | 2023-01-24 |
+		|    4 | EFGH   |   7000 | 2023-10-28 |
+		|    5 | IJKL   |   NULL | NULL       |
+		|    1 | Raju   |   3000 | 2023-02-05 |
+		|    2 | Mahesh |   4000 | 2023-03-24 |
+		|    3 | ABCD   |   4000 | 2023-01-24 |
+		| NULL | NULL   |   2456 | 2023-07-06 |
+		|    4 | EFGH   |   7000 | 2023-10-28 |
+		+------+--------+--------+------------+
+
 	8	SELECT c1.name AS customer1_name, 
 		c2.name AS customer2_name,     	
 		c1.address AS shared_address 
@@ -41,17 +85,89 @@ Day 4: Assignment - 2/11/23
 		ON c1.address = c2.address
 	     	AND c1.ID < c2.ID;
 
+		+----------------+----------------+----------------+
+		| customer1_name | customer2_name | shared_address |
+		+----------------+----------------+----------------+
+		| Raju           | EFGH           | Pune           |
+		+----------------+----------------+----------------+
+
 	9	SELECT ID, name, amount, o_date FROM customer
 		CROSS JOIN orders;
 
+		+----+--------+--------+------------+
+		| ID | name   | amount | o_date     |
+		+----+--------+--------+------------+
+		|  1 | Raju   |   7000 | 2023-10-28 |
+		|  1 | Raju   |   2456 | 2023-07-06 |
+		|  1 | Raju   |   4000 | 2023-01-24 |
+		|  1 | Raju   |   4000 | 2023-03-24 |
+		|  1 | Raju   |   3000 | 2023-02-05 |
+		|  2 | Mahesh |   7000 | 2023-10-28 |
+		|  2 | Mahesh |   2456 | 2023-07-06 |
+		|  2 | Mahesh |   4000 | 2023-01-24 |
+		|  2 | Mahesh |   4000 | 2023-03-24 |
+		|  2 | Mahesh |   3000 | 2023-02-05 |
+		|  3 | ABCD   |   7000 | 2023-10-28 |
+		|  3 | ABCD   |   2456 | 2023-07-06 |
+		|  3 | ABCD   |   4000 | 2023-01-24 |
+		|  3 | ABCD   |   4000 | 2023-03-24 |
+		|  3 | ABCD   |   3000 | 2023-02-05 |
+		|  4 | EFGH   |   7000 | 2023-10-28 |
+		|  4 | EFGH   |   2456 | 2023-07-06 |
+		|  4 | EFGH   |   4000 | 2023-01-24 |
+		|  4 | EFGH   |   4000 | 2023-03-24 |
+		|  4 | EFGH   |   3000 | 2023-02-05 |
+		|  5 | IJKL   |   7000 | 2023-10-28 |
+		|  5 | IJKL   |   2456 | 2023-07-06 |
+		|  5 | IJKL   |   4000 | 2023-01-24 |
+		|  5 | IJKL   |   4000 | 2023-03-24 |
+		|  5 | IJKL   |   3000 | 2023-02-05 |
+		|  6 | NIKHIL |   7000 | 2023-10-28 |
+		|  6 | NIKHIL |   2456 | 2023-07-06 |
+		|  6 | NIKHIL |   4000 | 2023-01-24 |
+		|  6 | NIKHIL |   4000 | 2023-03-24 |
+		|  6 | NIKHIL |   3000 | 2023-02-05 |
+		+----+--------+--------+------------+
+
 	10	SELECT * FROM customer WHERE salary > 20000;
+
+		+----+--------+------+---------+--------+
+		| ID | name   | age  | address | salary |
+		+----+--------+------+---------+--------+
+		|  1 | Raju   |   24 | Pune    |  45000 |
+		|  2 | Mahesh |   27 | Madha   |  68000 |
+		|  3 | ABCD   |   30 | Delhi   |  70000 |
+		|  4 | EFGH   |   22 | Pune    |  70000 |
+		|  5 | IJKL   |   24 | Solapur |  80000 |
+		+----+--------+------+---------+--------+
 
 	11	CREATE TABLE cust_bkup AS SELECT * FROM customer;
 
 	12	UPDATE customer SET salary = salary * 1.10 
 		WHERE ID IN (SELECT ID FROM cust_bkup WHERE age >= 24);
 
+		+----+--------+------+---------+--------+
+		| ID | name   | age  | address | salary |
+		+----+--------+------+---------+--------+
+		|  1 | Raju   |   24 | Pune    |  49500 |
+		|  2 | Mahesh |   27 | Madha   |  82280 |
+		|  3 | ABCD   |   30 | Delhi   |  84700 |
+		|  4 | EFGH   |   22 | Pune    |  70000 |
+		|  5 | IJKL   |   24 | Solapur |  88000 |
+		|  6 | NIKHIL |   22 | Pune    |   3000 |
+		+----+--------+------+---------+--------+
+
+
 	13	DELETE FROM customer WHERE ID IN (SELECT ID FROM cust_bkup WHERE age > 26);
+
+		+----+--------+------+---------+--------+
+		| ID | name   | age  | address | salary |
+		+----+--------+------+---------+--------+
+		|  1 | Raju   |   24 | Pune    |  49500 |
+		|  4 | EFGH   |   22 | Pune    |  70000 |
+		|  5 | IJKL   |   24 | Solapur |  88000 |
+		|  6 | NIKHIL |   22 | Pune    |   3000 |
+		+----+--------+------+---------+--------+
 
 
 
